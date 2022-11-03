@@ -56,14 +56,6 @@
         "env": []
     },
     {
-        "id": "6f5bf6362afb183a",
-        "type": "tab",
-        "label": "Obsolete",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
         "id": "d5e04a7259ccd20a",
         "type": "tab",
         "label": "Sockets",
@@ -510,32 +502,6 @@
     {
         "id": "438ea57ab480a85d",
         "type": "yeelight-config"
-    },
-    {
-        "id": "afc3ed7e6028115e",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "192.168.1.100",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
     },
     {
         "id": "437c1a1f.a2e604",
@@ -3872,6 +3838,7 @@
         "id": "bad86ea1b204ae2d",
         "type": "yaml",
         "z": "3c9a670b0fef1b10",
+        "d": true,
         "property": "payload",
         "name": "interpret YAML",
         "x": 540,
@@ -3886,8 +3853,10 @@
         "id": "c0fc26222e2fe4f4",
         "type": "file in",
         "z": "3c9a670b0fef1b10",
+        "d": true,
         "name": "load YAML",
         "filename": "/home/pi/sleep-model/personal_data.yaml",
+        "filenameType": "str",
         "format": "utf8",
         "chunk": false,
         "sendError": false,
@@ -3905,6 +3874,7 @@
         "id": "da9aa03f3cd5be85",
         "type": "function",
         "z": "3c9a670b0fef1b10",
+        "d": true,
         "name": "save into global",
         "func": "global.set('sleepneeded',msg.payload.sleepneeded);\n\nglobal.set('weekend',msg.payload.waketime.weekend);\nglobal.set('weekday',msg.payload.waketime.weekday);\n\nglobal.set('workbright',msg.payload.light.work.brightness);\nglobal.set('worktemp',msg.payload.light.work.temperature);\n\nglobal.set('daybright',msg.payload.light.day.brightness);\nglobal.set('daytemp',msg.payload.light.day.temperature);\n\nglobal.set('nightbright',msg.payload.light.night.brightness);\nglobal.set('nighttemp',msg.payload.light.night.temperature);\n\nreturn msg;",
         "outputs": 1,
@@ -4145,6 +4115,7 @@
         "id": "61dde895966e3545",
         "type": "inject",
         "z": "3c9a670b0fef1b10",
+        "d": true,
         "name": "Inject on start",
         "props": [
             {
@@ -4170,6 +4141,7 @@
         "id": "a43aa41111f1adfe",
         "type": "debug",
         "z": "3c9a670b0fef1b10",
+        "d": true,
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -5565,12 +5537,14 @@
         "method": "POST",
         "ret": "obj",
         "paytoqs": "ignore",
-        "url": "https://oauth2.googleapis.com/token?client_id=928557865363-4smbrp744a4tciomv638b35n9i2a8jh9.apps.googleusercontent.com&client_secret=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&refresh_token=1//09w00ZQHvQykACgYIARAAGAkSNwF-L9IrJ6z-OPMG9HK0ldfuvWKnVoKvqctzdQwCWw631CyVrKvqQbLdoTWxzaUxB855p7Kwem8&grant_type=refresh_token",
+        "url": "",
         "tls": "",
         "persist": false,
         "proxy": "",
+        "insecureHTTPParser": false,
         "authType": "",
         "senderr": false,
+        "headers": [],
         "x": 320,
         "y": 240,
         "wires": [
@@ -6136,668 +6110,6 @@
             []
         ],
         "l": false
-    },
-    {
-        "id": "2f2f5ff17033ca5c",
-        "type": "ui_text",
-        "z": "6f5bf6362afb183a",
-        "d": true,
-        "group": "b241d9c.2edb828",
-        "order": 7,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Color",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
-        "className": "",
-        "x": 890,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "1e18ae21edf467bd",
-        "type": "function",
-        "z": "6f5bf6362afb183a",
-        "d": true,
-        "name": "Format Color",
-        "func": "msg.payload = \"0x\" + msg.payload.toString(16);\nreturn msg;\n",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 350,
-        "y": 80,
-        "wires": [
-            [
-                "2f2f5ff17033ca5c",
-                "a416c55870bba4de",
-                "f2556ab9eb01cb94"
-            ]
-        ]
-    },
-    {
-        "id": "86c9cdbd83c8cc96",
-        "type": "ui_colour_picker",
-        "z": "6f5bf6362afb183a",
-        "d": true,
-        "name": "Color Picker",
-        "label": "COLOR PICKER",
-        "group": "b241d9c.2edb828",
-        "format": "hex",
-        "outformat": "object",
-        "showSwatch": true,
-        "showPicker": true,
-        "showValue": true,
-        "showHue": false,
-        "showAlpha": true,
-        "showLightness": true,
-        "square": "false",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "topic": "",
-        "topicType": "str",
-        "className": "",
-        "x": 170,
-        "y": 80,
-        "wires": [
-            [
-                "1e18ae21edf467bd"
-            ]
-        ]
-    },
-    {
-        "id": "a416c55870bba4de",
-        "type": "yeelight",
-        "z": "6f5bf6362afb183a",
-        "d": true,
-        "name": "Set RGB Color [Petr 1/2g",
-        "command": "set_rgb",
-        "config": "7176055036f3234a",
-        "x": 580,
-        "y": 60,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "f2556ab9eb01cb94",
-        "type": "yeelight",
-        "z": "6f5bf6362afb183a",
-        "d": true,
-        "name": "Set RGB Color [Petr 2/2]",
-        "command": "set_rgb",
-        "config": "438ea57ab480a85d",
-        "x": 580,
-        "y": 100,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a16f3b452a9dd5b0",
-        "type": "ui_numeric",
-        "z": "6f5bf6362afb183a",
-        "d": true,
-        "name": "",
-        "label": "Brightness [%]",
-        "tooltip": "",
-        "group": "b241d9c.2edb828",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "wrap": false,
-        "passthru": true,
-        "topic": "topic",
-        "topicType": "msg",
-        "format": "{{value}}",
-        "min": "5",
-        "max": "100",
-        "step": "5",
-        "className": "",
-        "x": 180,
-        "y": 160,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "6c9530a9074636cb",
-        "type": "ui_numeric",
-        "z": "6f5bf6362afb183a",
-        "d": true,
-        "name": "",
-        "label": "Temperature [°K]",
-        "tooltip": "",
-        "group": "b241d9c.2edb828",
-        "order": 6,
-        "width": 0,
-        "height": 0,
-        "wrap": false,
-        "passthru": true,
-        "topic": "topic",
-        "topicType": "msg",
-        "format": "{{value}}",
-        "min": "1700",
-        "max": "6500",
-        "step": "100",
-        "className": "",
-        "x": 190,
-        "y": 240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "a360095b3f7e88cc",
-        "type": "mqtt in",
-        "z": "6f5bf6362afb183a",
-        "d": true,
-        "name": "MQTT in",
-        "topic": "database",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "afc3ed7e6028115e",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 160,
-        "y": 380,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "9a179408d2258fc3",
-        "type": "comment",
-        "z": "6f5bf6362afb183a",
-        "name": "MQTT receive",
-        "info": "",
-        "x": 170,
-        "y": 320,
-        "wires": []
-    },
-    {
-        "id": "8cc8f26470a260bf",
-        "type": "subflow:d5680c33279cc258",
-        "z": "6f5bf6362afb183a",
-        "name": "",
-        "x": 990,
-        "y": 480,
-        "wires": [
-            [
-                "9fea7f88ab33af4f"
-            ],
-            [
-                "d251e590cf29005c"
-            ],
-            [
-                "fe067ad155c189cd"
-            ]
-        ]
-    },
-    {
-        "id": "e465ee936012c357",
-        "type": "inject",
-        "z": "6f5bf6362afb183a",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 720,
-        "y": 520,
-        "wires": [
-            [
-                "8cc8f26470a260bf"
-            ]
-        ]
-    },
-    {
-        "id": "9fea7f88ab33af4f",
-        "type": "link out",
-        "z": "6f5bf6362afb183a",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "b69002645a13aa83"
-        ],
-        "x": 1215,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "fe067ad155c189cd",
-        "type": "link out",
-        "z": "6f5bf6362afb183a",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "a0d7452fd9dad676"
-        ],
-        "x": 1225,
-        "y": 580,
-        "wires": []
-    },
-    {
-        "id": "d251e590cf29005c",
-        "type": "link out",
-        "z": "6f5bf6362afb183a",
-        "name": "",
-        "mode": "link",
-        "links": [
-            "d3beea3376fc2b93"
-        ],
-        "x": 1225,
-        "y": 480,
-        "wires": []
-    },
-    {
-        "id": "e0baa5347087a1d2",
-        "type": "debug",
-        "z": "6f5bf6362afb183a",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload.bucket.0.dataset.0.point",
-        "targetType": "msg",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1050,
-        "y": 220,
-        "wires": []
-    },
-    {
-        "id": "a05fc3e8981c4395",
-        "type": "file",
-        "z": "6f5bf6362afb183a",
-        "name": "Save settings",
-        "filename": "/home/pi/sleep-model/personal_data.yaml",
-        "appendNewline": false,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 680,
-        "y": 720,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "cae4b4f6d27c0009",
-        "type": "yaml",
-        "z": "6f5bf6362afb183a",
-        "property": "payload",
-        "name": "interpret YAML",
-        "x": 480,
-        "y": 720,
-        "wires": [
-            [
-                "a05fc3e8981c4395"
-            ]
-        ]
-    },
-    {
-        "id": "718cfed6ac2b9939",
-        "type": "change",
-        "z": "6f5bf6362afb183a",
-        "name": "Save night settings",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.light.night.brightness",
-                "pt": "msg",
-                "to": "payload.brightness",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.night.temperature",
-                "pt": "msg",
-                "to": "payload.temperature",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.day.brightness",
-                "pt": "msg",
-                "to": "daybright",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.day.temperature",
-                "pt": "msg",
-                "to": "daytemp",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.work.brightness",
-                "pt": "msg",
-                "to": "workbright",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.work.temperature",
-                "pt": "msg",
-                "to": "worktemp",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.sleepneeded",
-                "pt": "msg",
-                "to": "sleepneeded",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.waketime.weekday",
-                "pt": "msg",
-                "to": "weekday",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.waketime.weekend",
-                "pt": "msg",
-                "to": "weekend",
-                "tot": "global"
-            },
-            {
-                "t": "delete",
-                "p": "payload.brightness",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.temperature",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 230,
-        "y": 680,
-        "wires": [
-            [
-                "cae4b4f6d27c0009"
-            ]
-        ]
-    },
-    {
-        "id": "1f38fc99839e3cb0",
-        "type": "change",
-        "z": "6f5bf6362afb183a",
-        "name": "Save day settings",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.light.night.brightness",
-                "pt": "msg",
-                "to": "nightbright",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.night.temperature",
-                "pt": "msg",
-                "to": "nighttemp",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.day.brightness",
-                "pt": "msg",
-                "to": "payload.brightness",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.day.temperature",
-                "pt": "msg",
-                "to": "payload.temperature",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.work.brightness",
-                "pt": "msg",
-                "to": "workbright",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.work.temperature",
-                "pt": "msg",
-                "to": "worktemp",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.sleepneeded",
-                "pt": "msg",
-                "to": "sleepneeded",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.waketime.weekday",
-                "pt": "msg",
-                "to": "weekday",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.waketime.weekend",
-                "pt": "msg",
-                "to": "weekend",
-                "tot": "global"
-            },
-            {
-                "t": "delete",
-                "p": "payload.brightness",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.temperature",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 230,
-        "y": 720,
-        "wires": [
-            [
-                "cae4b4f6d27c0009"
-            ]
-        ]
-    },
-    {
-        "id": "601f16e252a3df8c",
-        "type": "change",
-        "z": "6f5bf6362afb183a",
-        "name": "Save work settings",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.light.night.brightness",
-                "pt": "msg",
-                "to": "nightbright",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.night.temperature",
-                "pt": "msg",
-                "to": "payload.nighttemp",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.day.brightness",
-                "pt": "msg",
-                "to": "daybright",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.day.temperature",
-                "pt": "msg",
-                "to": "daytemp",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.work.brightness",
-                "pt": "msg",
-                "to": "payload.brightness",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.light.work.temperature",
-                "pt": "msg",
-                "to": "payload.temperature",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.sleepneeded",
-                "pt": "msg",
-                "to": "sleepneeded",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.waketime.weekday",
-                "pt": "msg",
-                "to": "weekday",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.waketime.weekend",
-                "pt": "msg",
-                "to": "weekend",
-                "tot": "global"
-            },
-            {
-                "t": "delete",
-                "p": "payload.brightness",
-                "pt": "msg"
-            },
-            {
-                "t": "delete",
-                "p": "payload.temperature",
-                "pt": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 230,
-        "y": 760,
-        "wires": [
-            [
-                "cae4b4f6d27c0009",
-                "c3d896d38da44fe2"
-            ]
-        ]
-    },
-    {
-        "id": "c3d896d38da44fe2",
-        "type": "json",
-        "z": "6f5bf6362afb183a",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 410,
-        "y": 860,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "b5c46da0406751d7",
-        "type": "debug",
-        "z": "6f5bf6362afb183a",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 850,
-        "y": 820,
-        "wires": []
-    },
-    {
-        "id": "cf0f337a7ed15fd1",
-        "type": "debug",
-        "z": "6f5bf6362afb183a",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 630,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "d5b9428650db5d51",
-        "type": "file",
-        "z": "6f5bf6362afb183a",
-        "name": "Save settings",
-        "filename": "/home/pi/sleep-model/json.json",
-        "appendNewline": false,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 700,
-        "y": 780,
-        "wires": [
-            [
-                "b5c46da0406751d7"
-            ]
-        ]
     },
     {
         "id": "8f699793582ec6df",
