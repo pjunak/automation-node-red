@@ -1,0 +1,26 @@
+{
+    "438ea57ab480a85d": {
+        "hostname": "192.168.1.124",
+        "portnum": "55443"
+    },
+    "7176055036f3234a": {
+        "hostname": "192.168.1.123",
+        "portnum": "55443"
+    },
+    "3182aef5dd13c02b": {
+        "posLatitude": "49.195061",
+        "posLongitude": "16.606836"
+    },
+    "7b8ff078f06a8120": {
+        "userKey": "usa1dytik3h5m4fvemc7jeo5z6xws7",
+        "token": "an3s9t8eqk3wt8w1hdycwqej1tq848"
+    },
+    "b2197ec7fc5b2a79": {},
+    "e5821e546b730ff7": {},
+    "3d9659e036bc5499": {},
+    "4d781d1651e95dd3": {},
+    "ac7a85be66ee72e7": {
+        "token": "a6wiy2djv6e2ja9dv7wfe7f9ium9ia",
+        "userKey": "usa1dytik3h5m4fvemc7jeo5z6xws7"
+    }
+}

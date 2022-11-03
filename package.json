@@ -1,0 +1,12 @@
+{
+    "name": "smart-home-pattern-recognition",
+    "description": "Bachelor's thesis - user behavior pattern recognition in smart home",
+    "version": "0.0.1",
+    "dependencies": {},
+    "node-red": {
+        "settings": {
+            "flowFile": "flows.json",
+            "credentialsFile": "flows_cred.json"
+        }
+    }
+}
